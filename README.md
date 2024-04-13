@@ -45,7 +45,7 @@ The repository is currently a minimal modification of the starter template [here
 
     Populate `DEFAULT_USERNAME`, `DEFAULT_PW`, `ADMIN_USERNAME`, `ADMIN_PW`.
 
-    Optionally alter the env var `AUTH_SECRET` with any secret. Definitely do this before any non-local deployment.
+    Optionally alter the env var `AUTH_SECRET` with any secret. Definitely do this alteration before any non-local deployment.
 
 2. Run the following to start the development server:
 
@@ -126,7 +126,8 @@ To use an vercel postgres DB instead:
 ### Vercel Deployment
 
 We describe how one can deploy the code in this repository to host an instance of this app on Vercel.
-As of 3/5/24, this can be done with a Vercel hobby account, completely for free, with no need to enter
+
+As of 3/5/24, this can be done with a Vercel hobby account, for free, with no need to enter
 any financial information whatsoever. 
 
 1. First, test an optimized production build of your code locally.
@@ -136,7 +137,25 @@ any financial information whatsoever.
     npm run start
     ```
 
-TODO: Add more vercel-specific deployment details.
+2. On Vercel's dashboard, begin creating a new project by importing (your fork of) this repository.
+
+    Then configure the project by populating the following environment variables:
+
+    ```bash
+    AUTH_SECRET=your-secret
+    DEFAULT_USERNAME=your-sefaultuser-username
+    DEFAULT_PW=your-defaultuser-pw
+    ADMIN_USERNAME=your-admin-username
+    ADMIN_PW=your-admin-pw
+    USE_MOCK_DATA=true
+    ```
+
+    You should choose the values as you see fit, with the exception of USE_MOCK_DATA, which ought to be set to true until we set up
+    the Vercel free tier postgres instance, and get its credentials.
+
+3. Next we will instantiate the Vercel free-tier postgres instance, to use as our backend.
+
+TODO: Finish documenting the vercel deployment flow...
 
 
 ### TODO
